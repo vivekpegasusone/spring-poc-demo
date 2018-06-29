@@ -2,6 +2,8 @@ package com.spring.demo.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,6 +15,11 @@ import com.spring.demo.service.WordControllerService;
  
 @Controller
 public class WordCounterController {
+	
+	/**
+	 * Initializing logger for this class
+	 */
+	private static final Logger LOGGER = LoggerFactory.getLogger(WordCounterController.class);
  
 	private final WordControllerService service;
 	
@@ -23,8 +30,7 @@ public class WordCounterController {
 
 	@PostMapping("/processSentence")
 	public ModelAndView showMessage(@ModelAttribute("sentence") Sentence sentence) {
-		System.out.println(sentence.getText());
-		System.out.println(sentence.getSortedBy());
+		LOGGER.debug("Received sentence form values: {}", sentence);
 		Map<String, Long> map = service.getWordOccurrences(sentence.getText(), sentence.getSortedBy());
 		sentence.setWordOccurrence(map);
 		
@@ -33,5 +39,3 @@ public class WordCounterController {
 		return new ModelAndView("wordCounter", "result", sentence);
 	}		
 }
-
-
