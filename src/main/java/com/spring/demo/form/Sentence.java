@@ -39,5 +39,13 @@ public class Sentence {
 
 	public void setWordOccurrence(Map<String, Long> wordOccurrence) {
 		this.wordOccurrence = wordOccurrence;
-	}	
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "[text:" + text + ", sortedBy:" + sortedBy + "]";
+	}
 }
