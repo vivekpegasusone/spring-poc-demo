@@ -7,6 +7,13 @@
 		<title>Word Counter</title>
 	</head>
 	<body>
-		<demotag:words value="${result.wordOccurrence}"/>	
+		<c:choose>
+    		<c:when test="${empty result.wordOccurrence}">
+        		<c:out value="Please provide input string."/>
+    		</c:when>
+    		<c:otherwise>
+        		<demotag:words value="${result.wordOccurrence}"/>	
+    		</c:otherwise>
+		</c:choose>
 	</body>
 </html>
