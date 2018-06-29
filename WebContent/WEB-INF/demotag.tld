@@ -1,0 +1,21 @@
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+         version="2.0">
+ 
+     <tlib-version>1.0</tlib-version>
+     <short-name>Demo Tab Library</short-name>
+     <uri>demotag</uri>
+  
+     <tag>
+         <name>words</name>
+         <tag-class>com.spring.demo.tag.DemoTag</tag-class>
+         <body-content>empty</body-content>
+         <attribute>
+             <name>value</name>
+             <type>java.util.Map</type>
+             <required>true</required>
+             <rtexprvalue>true</rtexprvalue>
+         </attribute>         
+     </tag>
+</taglib>
