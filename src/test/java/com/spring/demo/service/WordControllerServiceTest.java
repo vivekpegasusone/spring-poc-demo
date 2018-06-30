@@ -14,11 +14,11 @@ public class WordControllerServiceTest extends WordControllerService {
 
 	@Test
 	public void testGetWordOccurrences() {
-		String text = "a quick brown fox jumped over a lazy dog";
+		String text = "a quick brown fox jumped over a lazy dog aaa bbb ccc s$ss*ss_123";
 		String sorBy = "occurrence";
 		Map<String, Long> response = service.getWordOccurrences(text, sorBy);
 		Assert.assertNotNull(response);
-		Assert.assertEquals(8, response.size());
+		Assert.assertEquals(14, response.size());
 		Assert.assertEquals(2, response.get("a").intValue());
 		Assert.assertEquals(1, response.get("quick").intValue());
 		Assert.assertEquals(1, response.get("brown").intValue());
@@ -27,11 +27,17 @@ public class WordControllerServiceTest extends WordControllerService {
 		Assert.assertEquals(1, response.get("over").intValue());
 		Assert.assertEquals(1, response.get("lazy").intValue());
 		Assert.assertEquals(1, response.get("dog").intValue());
+		Assert.assertEquals(1, response.get("aaa").intValue());
+		Assert.assertEquals(1, response.get("bbb").intValue());
+		Assert.assertEquals(1, response.get("ccc").intValue());
+		Assert.assertEquals(1, response.get("s").intValue());
+		Assert.assertEquals(2, response.get("ss").intValue());
+		Assert.assertEquals(1, response.get("123").intValue());
 	}
 	
 	@Test
 	public void testGetWordAlphabetically() {
-		String text = "a quick brown fox jumped over a lazy dog";
+		String text = "a quick brown fox jumped over a lazy dog ";
 		String sorBy = "alphabetically";
 		Map<String, Long> response = service.getWordOccurrences(text, sorBy);
 		List<String> keyList = new ArrayList<>();

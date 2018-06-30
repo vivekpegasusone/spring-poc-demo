@@ -18,7 +18,7 @@ public class WordControllerService {
 		Map<String, Long> wordCounter = new LinkedHashMap<String, Long>();
 		
 		if(!text.trim().isEmpty()) {
-			Stream<String> stream = Stream.of(text.toLowerCase().split("\\s"));
+			Stream<String> stream = Stream.of(text.toLowerCase().split("[^a-zA-Z0-9]"));
 			Map<String, Long> map = stream.collect(Collectors.groupingBy(String::toString,Collectors.counting()));
 			
 			switch(Order.getEnum(sortedby)) {
